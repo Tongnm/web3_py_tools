@@ -1,3 +1,5 @@
+import json
+
 from utils.get_web3 import logger, init_web3
 import os
 
@@ -36,27 +38,31 @@ def wallet_transaction(from_address=None, to_address=None, private_key=None, val
             transaction_info = web3.eth.get_transaction(tx_hash)
 
             logger.info(' '.join(['交易成功', '交易hash:', web3.to_hex(tx_hash)]))
-            logger.info(' '.join(['交易成功', '交易信息:', transaction_info]))
+            logger.info(' '.join(['交易成功', '交易信息:', str(transaction_info)]))
             return web3.to_hex(tx_hash)
         except Exception as e:
             logger.info(" ".join([e.args[0]]))
 
 
 if __name__ == '__main__':
+    """
+        转账功能
+    """
     # 主网名称 代理
     web3 = init_web3(net_name='metis', proxies=True)
 
-    account = web3.eth.account.create("123")
-    from_address = account.address
-    private_key = account._private_key
-    logger.info(from_address)
-    logger.info(web3.to_hex(private_key))
+    # account = web3.eth.account.create("123")
+    # from_address = account.address
+    # private_key = account._private_key
+    # logger.info(from_address)
+    # logger.info(web3.to_hex(private_key))
+    private_key = '0x7c52ed3f613a501236c04c531d641f49ad393efcf12400f45ec28f180794b736'
 
-    # from_address = ""
+    from_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
     to_address = "0xDB376DF770E58E73dca9d30E8cCbebCB6c60701f"
-    private_key = web3.to_hex(private_key)
 
-    # private_key = os.environ.get('PRIVATE_KEY')
+    #
+    # # private_key = os.environ.get('PRIVATE_KEY')
     # token数量
     value = 0.1
     wallet_transaction(from_address=from_address, to_address=to_address, private_key=private_key, value=value)

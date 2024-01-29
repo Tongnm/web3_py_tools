@@ -43,7 +43,7 @@ if __name__ == '__main__':
     net_name = 'eth'
     web3 = init_web3(net_name=net_name, proxies=True)
 
-    coin_name = 'bnb'
+    coin_name = 'usdt'
     inquiry_contract_info(net_name=net_name, coin_name=coin_name)
 
     # holder_address = "0xF977814e90dA44bFA03b6295A0616a897441aceC"
