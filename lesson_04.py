@@ -3,7 +3,7 @@ from web3.middleware import construct_sign_and_send_raw_middleware, geth_poa_mid
 from utils.get_web3 import logger, init_web3
 
 
-def wallet_transaction(from_address=None, to_address=None, private_key=None, value=None):
+def middleware_wallet_transaction(from_address=None, to_address=None, private_key=None, value=None):
     if not all([private_key, from_address, to_address, value]):
         logger.error('参数不足')
         return
@@ -49,5 +49,6 @@ if __name__ == '__main__':
     from_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
     to_address = "0xDB376DF770E58E73dca9d30E8cCbebCB6c60701f"
 
-    value = 0.05
-    wallet_transaction(from_address=from_address, to_address=to_address, private_key=private_key, value=value)
+    token_value = 0.05
+    middleware_wallet_transaction(from_address=from_address, to_address=to_address, private_key=private_key,
+                                  value=token_value)
