@@ -19,7 +19,6 @@ git clone https://github.com/dev-cerber/web3_py_tools.git
 
 ```commandline
 python -m venv venv
-
 ```
 
 ```commandline
