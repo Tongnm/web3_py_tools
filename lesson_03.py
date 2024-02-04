@@ -51,11 +51,6 @@ if __name__ == '__main__':
     # 主网名称 代理
     web3 = init_web3(net_name='metis', proxies=True)
 
-    # account = web3.eth.account.create("123")
-    # from_address = account.address
-    # private_key = account._private_key
-    # logger.info(from_address)
-    # logger.info(web3.to_hex(private_key))
     private_key = '0x7c52ed3f613a501236c04c531d641f49ad393efcf12400f45ec28f180794b736'
 
     from_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"

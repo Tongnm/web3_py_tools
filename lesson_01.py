@@ -1,4 +1,5 @@
 from utils.get_web3 import init_web3, logger
+from utils.network_endpoints import endpoints
 
 
 def inquiry_account_balance(wallet_address=None):
@@ -27,7 +28,9 @@ def inquiry_account_balance(wallet_address=None):
 
 
 if __name__ == '__main__':
-    net_name = 'metis'
-    web3 = init_web3(net_name=net_name, proxies=True)
-    wallet_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
-    inquiry_account_balance(wallet_address=wallet_address)
+    # net_name = 'eth'
+    net_names = endpoints.keys()
+    for net_name in net_names:
+        web3 = init_web3(net_name=net_name, proxies=True)
+        wallet_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
+        inquiry_account_balance(wallet_address=wallet_address)
