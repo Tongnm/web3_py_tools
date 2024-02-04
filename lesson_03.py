@@ -49,15 +49,14 @@ if __name__ == '__main__':
         转账功能
     """
     # 主网名称 代理
-    web3 = init_web3(net_name='metis', proxies=True)
+    web3 = init_web3(net_name='eth', proxies=True)
 
     private_key = '0x7c52ed3f613a501236c04c531d641f49ad393efcf12400f45ec28f180794b736'
 
     from_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
     to_address = "0xDB376DF770E58E73dca9d30E8cCbebCB6c60701f"
 
-    #
     # # private_key = os.environ.get('PRIVATE_KEY')
-    # token数量
+    # 转账token数量
     value = 0.1
     wallet_transaction(from_address=from_address, to_address=to_address, private_key=private_key, value=value)

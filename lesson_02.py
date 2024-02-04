@@ -23,7 +23,6 @@ def inquiry_contract_info(net_name=None, holder_address=None, coin_name=None):
         try:
             totalSupply = contract.functions.totalSupply().call()
             symbol = contract.functions.symbol().call()
-            # name = contract.functions.name().call()
             logger.info('代币名称: ' + symbol)
             logger.info('代币总量: ' + str(totalSupply))
         except Exception as e:

@@ -16,12 +16,7 @@ def inquiry_account_balance(wallet_address=None):
         balance = web3.eth.get_balance(wallet_address)
         # 账户余额(币种token)
         token = web3.from_wei(balance, 'ether')
-        logger.info(' | '.join((str(item) for item in
-                                ['区块高度'.center(6), '钱包地址'.center(39), '余额(wei)'.center(17),
-                                 '余额(token)'.center(8)])))
-        logger.info(
-            ' | '.join(
-                ([str(block_number).center(6), wallet_address, str(balance).center(9), str(token).center(11)])))
+        logger.info("".join(["钱包余额: ", str(token)]))
 
     else:
         logger.error('infura出错啦,请校验是否正常...')
@@ -29,8 +24,20 @@ def inquiry_account_balance(wallet_address=None):
 
 if __name__ == '__main__':
     # net_name = 'eth'
+    """
+    已配置网络,如有新网络请自行添加
+    | eth | linea | arbitrum | avalanche | bsc | base | celo | gnosis | optimism | polygon | zksync |
+    """
+
+    # 查询配置的所有网络上的钱包余额
     net_names = endpoints.keys()
     for net_name in net_names:
         web3 = init_web3(net_name=net_name, proxies=True)
         wallet_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
         inquiry_account_balance(wallet_address=wallet_address)
+
+    # # 指定网络的钱包余额
+    # net_name = 'eth'
+    # web3 = init_web3(net_name=net_name, proxies=True)
+    # wallet_address = "0x96bceeF977b08D2895e52D7848aa874Fa9F29450"
+    # inquiry_account_balance(wallet_address=wallet_address)

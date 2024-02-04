@@ -12,11 +12,16 @@ def middleware_wallet_transaction(from_address=None, to_address=None, private_ke
         web3.middleware_onion.inject(geth_poa_middleware, layer=0)
         web3.middleware_onion.add(construct_sign_and_send_raw_middleware(private_key))
         # 预估gas
-        estimate_gas = web3.eth.estimate_gas({
-            "from": from_address,
-            "value": web3.to_wei(value, 'ether'),
-            "to": to_address
-        })
+        try:
+            estimate_gas = web3.eth.estimate_gas({
+                "from": from_address,
+                "value": web3.to_wei(value, 'ether'),
+                "to": to_address
+            })
+        except Exception as e:
+            logger.info('余额不足')
+            return
+
         transfer_value = web3.to_wei(value, 'ether') - estimate_gas * web3.eth.gas_price
 
         if transfer_value > web3.eth.get_balance(from_address):
@@ -42,7 +47,7 @@ if __name__ == '__main__':
         转账功能
     """
     # 主网名称 代理
-    web3 = init_web3(net_name='metis', proxies=True)
+    web3 = init_web3(net_name='eth', proxies=True)
 
     private_key = '0x7c52ed3f613a501236c04c531d641f49ad393efcf12400f45ec28f180794b736'
 
