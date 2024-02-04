@@ -1,17 +1,3 @@
-# infura_api_key = '84842078b09946638c03157f83405213'
-# endpoints_net = {
-#     'eth': 'https://mainnet.infura.io/v3/',
-#     'linea': 'https://linea-mainnet.infura.io/v3/',
-#     'arbitrum': 'https://arbitrum-mainnet.infura.io/',
-#     'avalanche': 'https://avalanche-mainnet.infura.io/',
-#     'bsc': 'https://bsc-dataseed.binance.org/',
-#     'base': 'https://mainnet.base.org',
-#     'celo': 'https://celo-mainnet.infura.io/',
-#     'gnosis': 'https://rpc.gnosischain.com',
-#     'optimism': 'https://optimism-mainnet.infura.io/',
-#     'polygon': 'https://polygon-mainnet.infura.io/',
-#     'zksync': 'https://mainnet.era.zksync.io/',
-# }
 infura_api_key = '84842078b09946638c03157f83405213'
 
 endpoints_net = {
